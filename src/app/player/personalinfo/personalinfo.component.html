@@ -1,0 +1,43 @@
+<div class="container" *ngIf="hasProfile" style="background-color: rgb(255, 255, 255); padding: 30px;">
+    <div class="row">
+        <div class="col-md-12">
+            <mat-icon class="profilepic">account_circle</mat-icon>
+        </div>
+    </div>
+    <div class="name row">
+        {{personalInfo.first_name}} {{personalInfo.last_name}}
+    </div>
+    <div class="type row">
+        <div class="col-md-6">
+            Achiever Pct:
+        </div>
+        <div class="col-md-6">
+            {{personalInfo.achiever_pct | number : '1.2-2'}}
+        </div>
+    </div>
+    <div class="type row">
+        <div class="col-md-6">
+            Socializer Pct:
+        </div>
+        <div class="col-md-6">
+            {{personalInfo.socializer_pct | number : '1.2-2'}}
+        </div>
+    </div>
+    <div class="type row">
+        <div class="col-md-6">
+            Explorer Pct:
+        </div>
+        <div class="col-md-6">
+            {{personalInfo.explorer_pct | number : '1.2-2'}}
+        </div>
+    </div>
+    <div class="type row">
+        <div class="col-md-6">
+            Killer Pct:
+        </div>
+        <div class="col-md-6">
+            {{personalInfo.killer_pct | number : '1.2-2'}}
+        </div>
+    </div>
+</div>
+

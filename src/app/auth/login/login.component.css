@@ -1,0 +1,18 @@
+mat-card {
+    max-width: 400px;
+    margin: 2em auto;
+    text-align: center;
+    padding: 40px;
+  }
+  
+  mat-form-field {
+    display: block;
+  }
+
+  .register{
+    margin-top: 20px;
+  }
+
+  h2{
+    font-size: xx-large;
+  }

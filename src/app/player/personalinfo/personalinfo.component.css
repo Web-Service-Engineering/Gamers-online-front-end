@@ -1,0 +1,28 @@
+.name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.col-md-12{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+}
+
+.profilepic{
+    font-size: 100px;
+    height: 100px;
+    width: 100px;
+    margin-top: 50px;
+}
+
+.type {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
+

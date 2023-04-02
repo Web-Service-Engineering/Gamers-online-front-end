@@ -1,0 +1,16 @@
+.row{
+    margin-top: 20px;
+}
+
+.divWithScroll{
+    height:90%;
+    overflow:scroll;
+    overflow-x:hidden;
+}
+
+.test{
+    width: 800px;
+  height: 800px;
+  /* Center horizontally*/
+  margin: 0 auto;
+}

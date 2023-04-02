@@ -1,0 +1,51 @@
+<mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-between center" style="background-color: #aea0c7;">
+    <span>
+      <button mat-button routerLink="/" style="color:black; font-size: large;">Gamers</button>
+      <button mat-button routerLink="/"><mat-icon style="color:black;   font-size: 36px; width: 40px; height: 40px;">sports_kabaddi</mat-icon></button>
+    </span>
+    <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+      
+    </div>
+  </mat-toolbar>
+<div class="divWithScroll  container-fluid ">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 style="text-align: center; font-style: normal; color: #000000; font-size: 30px; font-weight: bold;">
+                Battle Test</h3>
+            <h6 style="text-align: center; font-size: 18px;">This test classifies players of multiplayer online games into categories based on Barties taxamny of players types
+            </h6>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+
+        </div>
+        <div class="col-md-6 " style="border: 2px solid rgb(181, 134, 212);
+        border-radius: 5px; background-color: #fcfaff;">
+            <div class="row">
+                <h2 style="text-align: center">Answer these Questions and Submit Before you Proceed</h2>
+            </div>
+            <div class="row test" >
+                <mat-list>
+                        <ng-container *ngFor="let item of items">
+                            <mat-list-item>{{item.question}}</mat-list-item>
+                            <mat-radio-group style="margin-left:30px;" [(ngModel)]="answer" (ngModelChange)="onChange(item.question,$event)">
+                                <mat-radio-button *ngFor="let subItem of item.answers" [value]="subItem.letter">
+                                    <mat-list-item>{{ subItem.description }}</mat-list-item>
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </ng-container>
+                </mat-list>
+                <button mat-raised-button style="width: 300px; margin-top: 30px;" (click)="submit()">Submit</button>
+            </div>
+        </div>
+        <div class="col-md-3">
+
+        </div>
+    </div>
+    <div class="row" style="margin: 20px;">
+        <div class="col-md-12">
+
+        </div>
+    </div>
+</div>
