@@ -6,7 +6,7 @@ import { CookieService } from 'ngx-cookie-service';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiURL = "http://127.0.0.1:5000/";
+  private apiURL = "https://gamers-online-matching-kiraleroger-gmailcom.vercel.app/";
 
   constructor(private http: HttpClient,private cookieService:CookieService) { }
 

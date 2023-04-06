@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { PlayerRoutingModule } from './player-routing.module';
 import { PlayerComponent } from './player.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -19,6 +18,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { GroupsComponent } from './groups/groups.component';
 import { CreateProfileComponent } from './create-profile/create-profile.component';
+import { HttpClient } from '@angular/common/http'
 
 
 @NgModule({
@@ -31,7 +31,8 @@ import { CreateProfileComponent } from './create-profile/create-profile.componen
     GroupactivitiesComponent,
     HomeComponent,
     GroupsComponent,
-    CreateProfileComponent
+    CreateProfileComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -47,6 +48,7 @@ import { CreateProfileComponent } from './create-profile/create-profile.componen
     ReactiveFormsModule,
     FormsModule
 
-  ]
+  ],
+  providers: [HttpClient],
 })
 export class PlayerModule { }

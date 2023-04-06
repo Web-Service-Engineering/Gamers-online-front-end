@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class PlayerService {
-  private apiURL = "http://127.0.0.1:5000/";
+  private apiURL = "https://gamers-online-matching-kiraleroger-gmailcom.vercel.app/";
 
   constructor(private http:HttpClient) { }
 
@@ -32,5 +32,12 @@ export class PlayerService {
 
   createProfile(player:any){
     return this.http.post(this.apiURL+"profile/",player);
+  }
+
+  addFriend(friendRequest:any){
+    return this.http.post(this.apiURL+"friends/",friendRequest);
+  }
+  removeFriend(fiendRemoveRequest:any){
+    return this.http.delete(this.apiURL+"friends/",fiendRemoveRequest);
   }
 }

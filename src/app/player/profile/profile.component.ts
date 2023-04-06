@@ -14,21 +14,25 @@ import { PlayerService } from '../player.service';
 })
 export class ProfileComponent {
   states=['GA','CA','TE','FA']
+  showModal:boolean=false;
   public userEmail:string='email';
   constructor(private cookieService:CookieService,private playerService:PlayerService, private toastr:ToastrService,private router:Router){
     this.userEmail=cookieService.get("email")
   }
 
   createProfile(data:any){
+    this.showModal=true
     data.email=this.userEmail
-    data.account_id=Number(this.cookieService.get("accountId"));
+    data.account_id=this.cookieService.get("accountId")
     data.id=this.cookieService.get("accountId");
     data.skillset_id="1";
     this.playerService.createProfile(data).subscribe(
       (response)=>{
+        this.showModal=false
         this.router.navigateByUrl('/battle-test');
       },
       (error)=>{
+        this.showModal=false
         this.toastr.error("Something went wrong. Try again.","Failed");
       }
     );

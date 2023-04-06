@@ -17,6 +17,7 @@ export class RegistrationComponent {
   public email = '';
   public password = '';
   public retypePassword = '';
+  showModal:boolean=false
 
   formdata:any;
 
@@ -54,6 +55,7 @@ export class RegistrationComponent {
 
 
   onClickSubmit(data:any) {
+    this.showModal=true
     const dataa={
       email:data.email,
       password:data.password
@@ -63,12 +65,15 @@ export class RegistrationComponent {
       this._authService.register(dataa)
       .subscribe(
         (response) => {
+          this.showModal=false
           this.toastr.success('login to proceed', 'Registered Successdully');
         },
         error => {
+          this.showModal=false
          this.toastr.error('Something went wrong. Please try again', 'Failed');
         });
     }else{
+      this.showModal=false
       this.toastr.error('Fillout the form first', 'Failed');
     }
   }

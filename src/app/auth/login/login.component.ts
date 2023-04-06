@@ -22,6 +22,7 @@ export class LoginComponent {
   accountId:string='';
   formdata: any;
   profile:any;
+  showModal:boolean=false;
 
   @Input() user: User={
     status:'',
@@ -74,6 +75,7 @@ export class LoginComponent {
   // get passwordInput() { return this.formdata.get('password'); } 
 
   public onSubmit(loginDto: any) {
+    this.showModal=true
     this.loginValid = true;
     this.username=loginDto.email
     this._authService.login(loginDto).pipe(
@@ -92,6 +94,7 @@ export class LoginComponent {
       (error) => {
         this.cookieService.set( 'isLogged',"false");
         this.loginValid =false;
+        this.showModal=false
         this._toastr.error("email and password not recognized. try again","Failed");
       }
 
@@ -104,12 +107,16 @@ export class LoginComponent {
       (response)=>{
         this.profile=response
         if(this.profile.achiever_pct===null || this.profile.explorer_pct===null || this.profile.killer_pct===null || this.profile.socializer_pct===null){
+          this.showModal=false
           this._router.navigateByUrl('/battle-test');
         }else{
+          this.showModal=false
           this._router.navigateByUrl('/player');
         }
+        this.showModal=false
       },
       (error)=>{
+        this.showModal=false
         this._router.navigateByUrl('/create-update-profile');
       }
     );

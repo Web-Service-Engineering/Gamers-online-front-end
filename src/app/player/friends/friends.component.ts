@@ -1,30 +1,59 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { PlayerService } from '../player.service';
+import { CookieService } from 'ngx-cookie-service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-friends',
   templateUrl: './friends.component.html',
   styleUrls: ['./friends.component.css']
 })
-export class FriendsComponent {
+export class FriendsComponent implements OnInit{
   typesOfShoes = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
-
+  selectedFriendId:string='';
   animalControl = new FormControl('', [Validators.required]);
   profiles:any=[];
-  // animals = [
-  //   {name: 'Dog', sound: 'Woof!'},
-  //   {name: 'Cat', sound: 'Meow!'},
-  //   {name: 'Cow', sound: 'Moo!'},
-  //   {name: 'Fox', sound: 'Wa-pa-pa-pa-pa-pa-pow!'},
-  // ];
 
-  constructor(private playerService:PlayerService){
+  constructor(private playerService:PlayerService,private cookie:CookieService,private toastr:ToastrService){
     this.getProfiles();
   }
-  test(){
-    console.log("Ready");
+  ngOnInit(): void {
+    //throw new Error('Method not implemented.');
+  }
+  
+  addFriend(){
+    var fr={
+      current_account_id:Number(this.cookie.get("accountId")),
+      friend_account_id:Number(this.selectedFriendId)
+    };
+    console.log(fr);
+    this.playerService.addFriend(fr).subscribe(
+      (response)=>{
+        this.ngOnInit()
+        this.toastr.success("friend request sent")
+    },
+    (error)=>{
+      this.toastr.error("failed, try again later")
+    });
     
+  }
+
+  removeFriend(){
+    var fr={
+      current_account_id:Number(this.cookie.get("accountId")),
+      friend_account_id:Number(this.selectedFriendId)
+    };
+    console.log(fr);
+    
+    this.playerService.removeFriend(fr).subscribe(
+      (response)=>{
+        this.ngOnInit()
+        this.toastr.success("friend removed successfully")
+    },
+    (error)=>{
+      this.toastr.error("failed, try again later")
+    });
   }
 
   getProfiles(){
@@ -36,5 +65,10 @@ export class FriendsComponent {
         console.log(error);
       }
     );
+  }
+
+  selectedFriend(profile:any){
+    console.log(profile);
+    
   }
 }

@@ -1,30 +1,12 @@
 <div class="container" style="background-color: rgb(255, 255, 255); padding: 30px;">
     <div class="row">
-        <h2>Friends List</h2>
+        <h2>Add a new friend</h2>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <mat-selection-list #shoes>
-                <mat-list-option *ngFor="let profile of profiles.data">
-                    {{profile.first_name}} {{profile.last_name}}
-                </mat-list-option>
-            </mat-selection-list>
-            <div class="row">
-                <div class="col-md-8">
-                    <p>
-                        Select and remove
-                    </p>
-                </div>
-                <div class="col-md-4">
-                    <button mat-raised-button >remove</button>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <div class="addform row">
         <div class="col-md-8">
             <mat-form-field>
-                <mat-select placeholder="add to your friends" [formControl]="animalControl" required>
+                <mat-select placeholder="add to your friends" [(ngModel)]="selectedFriendId" [formControl]="animalControl" required>
                     <mat-option>--</mat-option>
                     <mat-option *ngFor="let profile of profiles.data" [value]="profile.account_id">
                         {{profile.first_name}} {{profile.last_name}}
@@ -33,9 +15,44 @@
             </mat-form-field>
         </div>
         <div class="col-md-4">
-            <button mat-fab (click)="test()" style="background-color: #ffffff" >
+            <button mat-fab (click)="addFriend()" style="background-color: #ffffff" >
                 <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
               </button>
         </div>
     </div>
+    
+    <div class="row">
+        <h2>Your Friends</h2>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+                <div class="container" style="overflow-y: scroll; height: 250px;">
+                    <div class="row" *ngFor="let profile of profiles.data" (click)="selectedFriend(profile)" style="position: static; ">
+                        <mat-divider></mat-divider>
+                        <div class="col-md-3">
+                            <mat-icon>supervisor_account</mat-icon>
+                        </div>
+                        <div class="col-md-6">
+                            {{profile.first_name}} {{profile.last_name}}
+                        </div>
+                        <div class="col-md-3">
+                            <mat-icon>remove</mat-icon>
+                        </div>
+                        <mat-divider></mat-divider>
+                    </div>
+                </div>
+
+            <!-- <div class="row">
+                <div class="col-md-8">
+                    <p>
+                        Select and remove
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <button mat-raised-button >remove</button>
+                </div>
+            </div> -->
+        </div>
+    </div>
 </div>
+

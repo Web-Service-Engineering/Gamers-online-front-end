@@ -30,3 +30,30 @@
     </div>
     
   </mat-card>
+
+  <!--Dialog-->
+
+<div [style.display]="showModal ? 'block' : 'none'" class="modal" style="background-color: rgba(0,0,0,0.5);">
+  <div class="modal-dialog" style="margin-top: 200px;">
+    <div class="modal-content" style="width: auto; height: auto;">
+      <!-- <div class="modal-header">
+
+      </div> -->
+      <div class="modal-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <mat-spinner style="width: 70px; height: 70px; position: relative;"></mat-spinner>
+            </div>
+            <div class="col-md-8" style="margin: auto;">
+              <h1>submiting your registration . . .</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="modal-footer">
+
+      </div> -->
+    </div>
+  </div>
+</div>
